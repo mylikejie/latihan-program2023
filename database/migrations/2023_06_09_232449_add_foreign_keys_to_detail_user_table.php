@@ -14,8 +14,8 @@ return new class extends Migration
     public function up()
     {
         Schema::table('detail_user', function (Blueprint $table) {
-            $table->foreign('user_id', 'fk_detail_user_to_users')->references('id')->on('users')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('type_user_id', 'fk_detail_user_to_type_users')->references('id')->on('type_users')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('user_id', 'fk_detail_user_to_users')->references('id')->on('users')->onUpdate('cascade')->onDelete('cascade');
+            $table->foreign('type_user_id', 'fk_detail_user_to_type_user')->references('id')->on('type_user')->onUpdate('cascade')->onDelete('cascade');
         });
     }
 
@@ -28,7 +28,7 @@ return new class extends Migration
     {
         Schema::table('detail_user', function (Blueprint $table) {
             $table->dropForeign('fk_detail_user_to_users');
-            $table->dropForeign('fk_detail_user_to_type_users');
+            $table->dropForeign('fk_detail_user_to_type_user');
         });
     }
 };
